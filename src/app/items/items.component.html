@@ -1,0 +1,74 @@
+<div class="container mt-5 align-items-center">
+  <h1 class="display-5 text-white fw-bold">Available Items</h1>
+
+  <div class="container mt-3 d-flex p-0">
+    <form class="d-flex w-100" role="search">
+      <input
+        class="form-control me-2 rounded-pill"
+        type="search"
+        placeholder="Search"
+        aria-label="Search"
+      />
+      <button class="btn btn-outline-primary rounded-pill" type="submit">
+        Search
+      </button>
+    </form>
+
+    <div class="dropdown ms-3">
+      <a
+        class="btn btn-primary text-dark dropdown-toggle rounded-pill"
+        href="#"
+        role="button"
+        data-bs-toggle="dropdown"
+        aria-expanded="false"
+      >
+        Category
+      </a>
+
+      <ul class="dropdown-menu">
+        <li><a class="dropdown-item" href="#">GPU</a></li>
+        <li><a class="dropdown-item" href="#">CPU</a></li>
+        <li><a class="dropdown-item" href="#">RAM</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="container text-white mt-3 p-0 d-flex gap-2 align-items-center">
+    <span>Filter:</span>
+    <mat-chip-option>In Stock</mat-chip-option>
+    <span class="ms-3">Brand: </span>
+    <mat-chip-listbox>
+      <!-- multiple -->
+      <mat-chip-option>Nvidia</mat-chip-option>
+      <mat-chip-option>AMD</mat-chip-option>
+      <mat-chip-option>Intel</mat-chip-option>
+    </mat-chip-listbox>
+  </div>
+
+  <div class="div-container mt-5">
+    <h1 class="display-6 text-white">Discover</h1>
+    <div class="row">
+      @for (item of items; track $index) {
+      <div class="col-3 my-4">
+        <div [@listAnimation]>
+          <div class="card rounded-5" style="width: 18rem">
+            <img [src]="myUrl" class="card-img-top rounded-5" alt="..." />
+            <div class="card-body">
+              <h5 class="card-title">RTX 4060</h5>
+              <p class="card-text">Price: $299.99 <br />Qty: 12</p>
+              <div class="d-flex gap-2">
+                <a href="#" class="btn btn-success rounded-pill"
+                  >Add To Build</a
+                >
+                <a href="#" class="btn btn-outline-primary rounded-pill"
+                  >Details</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      }
+    </div>
+  </div>
+</div>

@@ -1,0 +1,7 @@
+.card-header {
+  border-color: #ff6bff !important;
+}
+.card.hover:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 0 25px rgba(0, 194, 255, 0.3);
+}

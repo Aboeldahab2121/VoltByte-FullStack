@@ -1,1 +1,63 @@
 /* You can add global styles to this file, and also import other style files */
+@import "@angular/material/prebuilt-themes/indigo-pink.css";
+body {
+  background: radial-gradient(circle at 30% 30%, #11131b 0%, #090a0f 100%);
+  background-attachment: fixed;
+  position: relative;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: linear-gradient(120deg, #00ffee, #0088ff, #ff00ff, #ff6600);
+  background-size: 400% 400%;
+  mix-blend-mode: overlay;
+  opacity: 0.3;
+  animation: moveAurora 12s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes moveAurora {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.card {
+  background: rgba(255, 255, 255, 0.06) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  color: #e8e8e8 !important;
+  transition: all 0.3s ease;
+}
+
+.btn-outline-primary {
+  color: #ff6bff !important;
+  border: 1px solid #ff6bff !important;
+  transition: all 0.3s ease;
+}
+.btn-outline-primary:hover {
+  background-color: #ff6bff !important;
+  color: #0b0b0f !important;
+  box-shadow: 0 0 12px #ff6bff !important;
+}
+
+.btn-success {
+  background-color: #adff2f !important;
+  border-color: #adff2f !important;
+  color: #0b0b0f !important;
+}
+.btn-success:hover {
+  background-color: #c7ff5a !important;
+  box-shadow: 0 0 10px #adff2f !important;
+}
+.btn-primary {
+  background-color: #00c2ff !important;
+  border: none !important;
+}
