@@ -1,13 +1,8 @@
-import { Component } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
 import { MatChipsModule } from "@angular/material/chips";
-import {
-  trigger,
-  transition,
-  style,
-  animate,
-  query,
-  stagger,
-} from "@angular/animations";
+import { trigger, transition, style, animate } from "@angular/animations";
+import { ItemsService } from "../services/items.service";
+import { Item } from "./Item";
 
 @Component({
   selector: "app-items",
@@ -27,7 +22,27 @@ import {
     ]),
   ],
 })
-export class ItemsComponent {
-  items: number[] = [1, 2, 3, 4];
+export class ItemsComponent implements OnInit {
+  constructor(private _itemsService: ItemsService) {}
+  items!: Item[];
+  itemsFiltered!: Item[];
   myUrl: string = "4060.jpeg";
+
+  ngOnInit() {
+    this._itemsService.getItems().subscribe({
+      next: (data) => {
+        this.items = data;
+        this.itemsFiltered = data;
+        console.log(this.items);
+      },
+    });
+  }
+
+  filterList(searchTerm: string) {
+    this.itemsFiltered = [];
+
+    this.itemsFiltered = this.items.filter((element: Item) =>
+      element.title.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+  }
 }
