@@ -9,19 +9,23 @@ html {
     height: 100vh;
     object-fit: cover;
 }
+h2{
+    color:black;
+}
 
 .right-side {
     display: flex;
     align-items: center;
     justify-content: center;
     padding: 2rem;
-    margin-top: 2rem;
+    background-color: white;
 }
 
 .card {
     max-width: 400px;
     border: none;
     border-radius: 12px;
+    color:black;
 }
 
 button img {
