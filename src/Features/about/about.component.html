@@ -1,0 +1,65 @@
+<!-- Company Story Section -->
+<section class="bento-section">
+    <h2 class="section-title">Our Story</h2>
+    <div class="story-content">
+        <p class="story-paragraph">It all sparked with a wide-eyed junior developer whose heart raced at the sight of
+            gleaming PC builds and cutting-edge computers. This burning passion ignited a relentless quest to dive deep
+            into computer technologies, mastering every circuit and code. Fueling his fire, he plunged into coding,
+            transforming raw curiosity into powerful software skills, all while racing to keep pace with the
+            lightning-fast evolution of tech.</p>
+        <p class="story-paragraph">In 2023, this visionary developer channeled his obsession into something
+            revolutionary: VoltByte. What started as a personal dream exploded into a vibrant shared platform, uniting
+            gamers, tech wizards, and computer enthusiasts from every corner of the globe.</p>
+        <p class="story-paragraph">Today, VoltByte stands as the ultimate hub where passions collide—fusing jaw-dropping
+            PC builds with community-driven innovation. We're not just a website; we're a movement, empowering you to
+            push tech boundaries, craft epic rigs, and connect with fellow enthusiasts who share your unquenchable love
+            for all things computing. Join us and unleash your greatest potential!</p>
+    </div>
+</section>
+
+<!-- Values Section -->
+<section class="bento-section">
+    <h2 class="section-title">Our Core Values</h2>
+    <div class="bento-grid">
+        <div *ngFor="let value of values" class="bento-card" [@fadeIn]="{value: 'visible'}">
+            <div class="card-icon">{{ value.icon }}</div>
+            <h3 class="card-title">{{ value.title }}</h3>
+            <p class="card-desc">{{ value.desc }}</p>
+        </div>
+    </div>
+</section>
+
+<!-- Team Section -->
+<section class="diagonal-section">
+    <div class="diagonal-bg"></div>
+    <div class="diagonal-content">
+        <div class="diagonal-text">
+            <h2>Meet the Visionaries Behind VoltByte</h2>
+            <p>Our powerhouse team of developers is fueled by an insatiable passion for tech, coding, and PC innovation.
+            </p>
+        </div>
+        <div class="team-grid">
+            <div *ngFor="let member of teamMembers" class="team-card" [@fadeIn]="{value: 'visible'}">
+                <h3 class="team-name">{{ member.name }}</h3>
+                <p class="team-role">{{ member.role }}</p>
+                <p class="team-desc">{{ member.desc }}</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FAQ Section -->
+<section class="bento-section">
+    <h2 class="section-title">Frequently Asked Questions</h2>
+    <div class="faq-list">
+        <div *ngFor="let faq of faqs; let i = index" class="faq-item">
+            <div class="faq-question" (click)="toggleFaq(i)">
+                <span>{{ faq.question }}</span>
+                <span class="faq-toggle">{{ faq.expanded ? '-' : '+' }}</span>
+            </div>
+            <div class="faq-answer" [@faqToggle]="{value: faq.expanded ? 'expanded' : 'collapsed'}">
+                {{ faq.answer }}
+            </div>
+        </div>
+    </div>
+</section>

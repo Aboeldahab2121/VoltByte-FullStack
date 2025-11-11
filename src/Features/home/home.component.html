@@ -1,0 +1,70 @@
+<!-- Hero Section -->
+<section class="hero">
+    <div class="overlay">
+        <h1 class="typing-text">{{ displayedText }}</h1>
+        <div class="content">
+            <div class="pc-wrapper" [@fadeZoomIn]="imageVisible ? 'visible' : 'hidden'">
+                <div class="pc-image">
+                    <img src="https://www.buildredux.com/cdn/shop/files/New-Better_1.webp" alt="Custom PC Build"
+                        loading="lazy" />
+                </div>
+                <div class="spec-tag spec-top" [@specFadeIn]="specTopVisible ? 'visible' : 'hidden'">
+                    Ryzen 9 7950X
+                </div>
+                <div class="spec-tag spec-right" [@specFadeIn]="specRightVisible ? 'visible' : 'hidden'">
+                    RTX 4090
+                </div>
+                <div class="spec-tag spec-bottom" [@specFadeIn]="specBottomVisible ? 'visible' : 'hidden'">
+                    64GB DDR5
+                </div>
+                <div class="spec-tag spec-left" [@specFadeIn]="specLeftVisible ? 'visible' : 'hidden'">
+                    Custom Water Loop
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Bento Grid Section -->
+<section class="bento-section">
+    <h2 class="section-title">Explore Our Arsenal</h2>
+    <div class="bento-grid">
+        <div *ngFor="let card of bentoCards" class="bento-card" [ngClass]="getBentoCardClass(card.size)">
+            <div class="card-icon">{{ card.icon }}</div>
+            <h3 class="card-title">{{ card.title }}</h3>
+            <p class="card-desc">{{ card.desc }}</p>
+        </div>
+    </div>
+</section>
+
+<!-- Scrolling Marquee -->
+<section class="marquee-section">
+    <div class="marquee">
+        <span class="marquee-item">PERFORMANCE • PRECISION • POWER •</span>
+        <span class="marquee-item">PERFORMANCE • PRECISION • POWER •</span>
+        <span class="marquee-item">PERFORMANCE • PRECISION • POWER •</span>
+        <span class="marquee-item">PERFORMANCE • PRECISION • POWER •</span>
+        <span class="marquee-item">PERFORMANCE • PRECISION • POWER •</span>
+        <span class="marquee-item">PERFORMANCE • PRECISION • POWER •</span>
+        <span class="marquee-item">PERFORMANCE • PRECISION • POWER •</span>
+    </div>
+</section>
+
+<!-- Diagonal Split Section -->
+<section class="diagonal-section">
+    <div class="diagonal-bg"></div>
+    <div class="diagonal-content">
+        <div class="diagonal-text">
+            <h2>Built Different, Performing Better</h2>
+            <p>Every VoltByte system undergoes rigorous testing and quality control. We don't just assemble computers—we
+                engineer experiences that push the boundaries of what's possible.</p>
+            <button class="cta-button">Start Your Build</button>
+        </div>
+        <div class="diagonal-visual">
+            <div *ngFor="let stat of stats" class="stat-box">
+                <div class="stat-number">{{ stat.number }}</div>
+                <div class="stat-label">{{ stat.label }}</div>
+            </div>
+        </div>
+    </div>
+</section>

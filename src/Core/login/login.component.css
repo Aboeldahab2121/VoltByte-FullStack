@@ -1,0 +1,63 @@
+body,
+html {
+    height: 100%;
+    font-family: 'Poppins', sans-serif;
+}
+
+.left-side img {
+    width: 100%;
+    height: 100vh;
+    object-fit: cover;
+}
+
+.right-side {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    margin-top: 2rem;
+}
+
+.card {
+    max-width: 400px;
+    border: none;
+    border-radius: 12px;
+}
+
+button img {
+    width: 24px;
+    margin-right: 6px;
+}
+
+.error-message {
+    display: flex;
+    align-items: start;
+    gap: 8px;
+    margin-top: 8px;
+    padding: 8px 12px;
+    background-color: #fff5f5;
+    border-left: 3px solid #dc3545;
+    border-radius: 6px;
+    font-size: 0.875rem;
+    color: #dc3545;
+    animation: slideDown 0.3s ease;
+}
+
+.error-icon {
+    flex-shrink: 0;
+    width: 16px;
+    height: 16px;
+    margin-top: 1px;
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
