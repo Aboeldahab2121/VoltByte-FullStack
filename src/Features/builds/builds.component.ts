@@ -59,15 +59,7 @@ export class BuildsComponent {
       price: 1599,
       category_id: 1,
       quantity: 4,
-    },
-    {
-      id: 5,
-      title: "Mini Power PC",
-      image: "/recommended_builds/5.png",
-      price: 999,
-      category_id: 2,
-      quantity: 6,
-    },
+    }
   ];
 
   trending: Item[] = [

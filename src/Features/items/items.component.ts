@@ -1,13 +1,14 @@
 import { Component, OnInit } from "@angular/core";
 import { MatChipsModule } from "@angular/material/chips";
 import { trigger, transition, style, animate } from "@angular/animations";
-import { ItemsService } from "../services/items.service";
+import { ItemsService } from "../../app/services/items.service";
 import { Item } from "./Item";
+import { CommonModule } from "@angular/common";
 
 @Component({
   selector: "app-items",
   standalone: true,
-  imports: [MatChipsModule],
+  imports: [MatChipsModule, CommonModule],
   templateUrl: "./items.component.html",
   styleUrl: "./items.component.css",
   animations: [
@@ -23,26 +24,42 @@ import { Item } from "./Item";
   ],
 })
 export class ItemsComponent implements OnInit {
+  items: Item[] = [];
+  itemsFiltered: Item[] = [];
+  isLoading: boolean = true;
+  errorMessage: string = '';
+
   constructor(private _itemsService: ItemsService) {}
-  items!: Item[];
-  itemsFiltered!: Item[];
-  myUrl: string = "4060.jpeg";
 
   ngOnInit() {
+    this.loadItems();
+  }
+
+  loadItems() {
+    this.isLoading = true;
     this._itemsService.getItems().subscribe({
       next: (data) => {
         this.items = data;
         this.itemsFiltered = data;
-        console.log(this.items);
+        this.isLoading = false;
       },
+      error: (error) => {
+        console.error('Error loading items:', error);
+        this.errorMessage = 'Failed to load items. Please try again.';
+        this.isLoading = false;
+      }
     });
   }
 
   filterList(searchTerm: string) {
-    this.itemsFiltered = [];
+    if (!searchTerm.trim()) {
+      this.itemsFiltered = [...this.items];
+      return;
+    }
 
     this.itemsFiltered = this.items.filter((element: Item) =>
       element.title.toLowerCase().includes(searchTerm.toLowerCase())
     );
   }
+  
 }
