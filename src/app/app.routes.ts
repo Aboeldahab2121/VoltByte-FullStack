@@ -17,6 +17,7 @@ export const routes: Routes = [
     children: [
       { path: "login", component: LoginComponent },
       { path: "register", component: RegisterComponent },
+      { path: "", redirectTo: "login", pathMatch: "full" },
     ],
   },
   {
@@ -24,12 +25,12 @@ export const routes: Routes = [
     component: MainLayoutComponent,
     canActivate: [authGuard],
     children: [
-      { path: "", component: HomeComponent },
+      { path: "home", component: HomeComponent },
       { path: "builds", component: BuildsComponent },
       { path: "items", component: ItemsComponent },
       { path: "about", component: AboutComponent },
+      { path: "", redirectTo: "home", pathMatch: "full" },
     ],
   },
-  { path: "", redirectTo: "auth/login", pathMatch: "full" },
-  { path: "**", component: NotfoundComponent, pathMatch: "full" },
+  { path: "**", component: NotfoundComponent },
 ];

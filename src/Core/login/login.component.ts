@@ -17,6 +17,9 @@ import { AuthService } from "../../app/auth.service";
   styleUrls: ["./login.component.css"],
 })
 export class LoginComponent {
+  loginError: string = '';
+  isLoading: boolean = false;
+
   constructor(
     private http: HttpClient,
     private authService: AuthService,
@@ -32,11 +35,14 @@ export class LoginComponent {
   });
 
   loginSubmit() {
+    this.loginError = '';
+
     if (this.loginForm.invalid) {
       this.loginForm.markAllAsTouched();
       return;
     }
 
+    this.isLoading = true;
     const credentials = this.loginForm.value;
 
     this.http
@@ -46,12 +52,20 @@ export class LoginComponent {
       )
       .subscribe({
         next: (response) => {
+          this.isLoading = false;
           this.authService.setToken(response.token);
           console.log("Login Successful, Token stored");
           this.router.navigate([""]);
         },
         error: (err) => {
+          this.isLoading = false;
           console.error("Login Failed", err);
+          
+          if (err.status === 401) {
+            this.loginError = "Invalid email or password. Please try again.";
+          } else if (err.status === 422) {
+            this.loginError = "Please check your credentials and try again.";
+          }
         },
       });
   }

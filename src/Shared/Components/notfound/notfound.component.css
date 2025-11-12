@@ -1,27 +1,33 @@
 .notfound-section {
   width: 100%;
-  min-height: 100vh;
+  height: 100vh;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   position: relative;
   text-align: center;
   color: #fff;
   overflow: hidden;
-  padding: 2rem;
+  padding: 2rem 1rem;
 }
 
 .notfound-section .overlay {
   max-width: 800px;
   z-index: 2;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
+
 .cta-button {
   background: linear-gradient(135deg, #90caf9, #64b5f6);
   color: #1a1a1a;
-  padding: 1rem 2.5rem;
+  padding: 0.875rem 2rem;
   border: none;
   border-radius: 50px;
-  font-size: 1rem;
+  font-size: 0.95rem;
   font-weight: 600;
   cursor: pointer;
   transition: transform 0.3s, box-shadow 0.3s;
@@ -32,15 +38,21 @@
     box-shadow: 0 10px 30px rgba(144, 202, 249, 0.3);
   }
 }
+
 .error-content {
-  margin-top: 2rem;
+  margin-top: 1.5rem;
+}
+
+.error-content img {
+  width: 14rem !important;
+  max-width: 100%;
 }
 
 .error-desc {
-  margin-top: 1.5rem;
+  margin-top: 1.25rem;
   color: #b0b0b0;
-  font-size: 1.1rem;
-  line-height: 1.8;
+  font-size: 1rem;
+  line-height: 1.6;
   font-family: var(--font-main);
   max-width: 600px;
   margin-left: auto;
@@ -51,9 +63,9 @@
   background: transparent;
   color: #90caf9;
   border: 2px solid #90caf9;
-  padding: 1rem 2.5rem;
+  padding: 0.875rem 2rem;
   border-radius: 50px;
-  font-size: 1rem;
+  font-size: 0.95rem;
   font-weight: 600;
   cursor: pointer;
   transition: all 0.3s;
@@ -67,13 +79,28 @@
 }
 
 @media (max-width: 768px) {
+  .typing-text {
+    font-size: 1.5rem !important;
+  }
+
+  .error-content img {
+    width: 12rem !important;
+  }
+
   .error-desc {
-    font-size: 1rem;
+    font-size: 0.9rem;
     padding: 0 1rem;
   }
+
   .cta-button,
   .secondary-button {
     width: 100%;
+    padding: 0.75rem 1.5rem;
+    font-size: 0.9rem;
+  }
+
+  .marquee-item {
+    font-size: 2rem !important;
   }
 }
 
@@ -99,7 +126,7 @@
 }
 
 .typing-text {
-  font-size: 1.9rem;
+  font-size: 1.75rem;
   font-weight: 600;
   white-space: normal;
   word-break: break-word;
@@ -108,22 +135,16 @@
   display: inline-block;
   animation: blink 1s step-end infinite;
   font-family: var(--font-main);
-}
-@keyframes blink {
-  0% {
-    border-color: #90caf9;
-  }
-  50% {
-    border-color: transparent;
-  }
-  100% {
-    border-color: #90caf9;
-  }
+  margin-bottom: 0;
 }
 
 .marquee-section {
-  padding: 4rem 0;
+  padding: 1rem 0;
   overflow: hidden;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.3);
 }
 
 .marquee {
@@ -144,7 +165,7 @@
 
 .marquee-item {
   flex-shrink: 0;
-  font-size: 3rem;
+  font-size: 2.5rem;
   font-weight: 700;
   color: rgba(255, 255, 255, 0.1);
   white-space: nowrap;

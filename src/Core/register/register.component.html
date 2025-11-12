@@ -1,35 +1,55 @@
 <div class="w-100">
     <div class="row vh-100 g-0">
-
         <div class="col-md-6 left-side d-none d-md-block">
             <img src="../../../Images/SimpleROG.png" alt="Side Image" style="overflow: hidden;">
         </div>
 
         <div class="col-md-6 right-side">
-            <div class="card p-4 w-100">
+            <div class="card p-4 h-100 w-100">
                 <div class="d-flex justify-content-center mb-3">
                     <img src="../../../SVGs/voltbyte-logo.svg" alt="VoltByte Logo" height="70">
                 </div>
 
-                <h2 class="text-center fw-semibold mb-4">Create your account</h2>
+                <h2 class="text-center fw-semibold mb-4">Create Your Account</h2>
+
+                <!-- Success Message Display -->
+                @if(registerSuccess){
+                <div class="success-message mb-3">
+                    <svg class="success-icon" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd"
+                            d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                            clip-rule="evenodd" />
+                    </svg>
+                    <span>{{ registerSuccess }}</span>
+                </div>
+                }
+
+                <!-- Error Message Display -->
+                @if(registerError){
+                <div class="error-message mb-3">
+                    <svg class="error-icon" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd"
+                            d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z"
+                            clip-rule="evenodd" />
+                    </svg>
+                    <span>{{ registerError }}</span>
+                </div>
+                }
 
                 <form [formGroup]="registerForm" (ngSubmit)="registerSubmit()">
                     <div class="row">
                         <div class="col-md-6 mb-3">
                             <label for="first_name" class="form-label fw-medium text-dark">First Name</label>
-                            <input type="text" class="form-control" formControlName="first_name" id="first_name" placeholder="Jon">
-                            @if(registerForm.get("first_name")?.errors && registerForm.get("first_name")?.touched){
+                            <input type="text" class="form-control" formControlName="first_name" id="first_name"
+                                placeholder="Enter your first name">
+                            @if(registerForm.get('first_name')?.errors && registerForm.get('first_name')?.touched){
                             <div class="error-message">
                                 <svg class="error-icon" fill="currentColor" viewBox="0 0 20 20">
                                     <path fill-rule="evenodd"
                                         d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z"
                                         clip-rule="evenodd" />
                                 </svg>
-                                <span>
-                                    @if (registerForm.get("first_name")?.getError("required")){
-                                    This field is required
-                                    }
-                                </span>
+                                <span>This field is required</span>
                             </div>
                             }
                         </div>
@@ -37,19 +57,15 @@
                         <div class="col-md-6 mb-3">
                             <label for="last_name" class="form-label fw-medium text-dark">Last Name</label>
                             <input type="text" class="form-control" formControlName="last_name" id="last_name"
-                                placeholder="Doe">
-                            @if(registerForm.get("last_name")?.errors && registerForm.get("last_name")?.touched){
+                                placeholder="Enter your last name">
+                            @if(registerForm.get('last_name')?.errors && registerForm.get('last_name')?.touched){
                             <div class="error-message">
                                 <svg class="error-icon" fill="currentColor" viewBox="0 0 20 20">
                                     <path fill-rule="evenodd"
                                         d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z"
                                         clip-rule="evenodd" />
                                 </svg>
-                                <span>
-                                    @if (registerForm.get("last_name")?.getError("required")){
-                                    This field is required
-                                    }
-                                </span>
+                                <span>This field is required</span>
                             </div>
                             }
                         </div>
@@ -57,9 +73,9 @@
 
                     <div class="mb-3">
                         <label for="email" class="form-label fw-medium text-dark">Email</label>
-                        <input type="text" class="form-control" formControlName="email" id="email"
+                        <input type="email" class="form-control" formControlName="email" id="email"
                             placeholder="email@example.com">
-                        @if(registerForm.get("email")?.errors && registerForm.get("email")?.touched){
+                        @if(registerForm.get('email')?.errors && registerForm.get('email')?.touched){
                         <div class="error-message">
                             <svg class="error-icon" fill="currentColor" viewBox="0 0 20 20">
                                 <path fill-rule="evenodd"
@@ -67,10 +83,10 @@
                                     clip-rule="evenodd" />
                             </svg>
                             <span>
-                                @if (registerForm.get("email")?.getError("required")){
+                                @if (registerForm.get('email')?.getError('required')){
                                 This field is required
                                 }
-                                @else if (registerForm.get("email")?.getError("email")){
+                                @else if (registerForm.get('email')?.getError('email')){
                                 This has to be in a correct email format
                                 }
                             </span>
@@ -82,7 +98,7 @@
                         <label for="password" class="form-label fw-medium text-dark">Password</label>
                         <input type="password" class="form-control" formControlName="password" id="password"
                             placeholder="Enter your password">
-                        @if(registerForm.get("password")?.errors && registerForm.get("password")?.touched){
+                        @if(registerForm.get('password')?.errors && registerForm.get('password')?.touched){
                         <div class="error-message">
                             <svg class="error-icon" fill="currentColor" viewBox="0 0 20 20">
                                 <path fill-rule="evenodd"
@@ -90,26 +106,48 @@
                                     clip-rule="evenodd" />
                             </svg>
                             <span>
-                                @if (registerForm.get("password")?.getError("required")){
+                                @if (registerForm.get('password')?.getError('required')){
                                 This field is required
                                 }
-                                @else if (registerForm.get("password")?.getError("minlength")){
-                                Password must be at least 8 characters
+                                @else if(registerForm.get('password')?.getError('minlength')){
+                                Password should be at least 6 characters
                                 }
                             </span>
                         </div>
                         }
                     </div>
 
-                    <button type="submit" class="btn btn-dark w-100 fw-semibold mt-2">Sign Up</button>
-                    <button class="btn btn-outline-dark w-100 fw-semibold mt-2">
-                        <img src="../../../SVGs/Google-svg.svg">Continue with Google</button>
-                    <button type="submit" class="btn btn-outline-dark w-100 fw-semibold mt-2">
-                        <img src="../../../SVGs/github-svg.svg">Continue with Github</button>
+                    <!-- Role Selection -->
+                    <div class="mb-3">
+                        <label for="role" class="form-label fw-medium text-dark">Account Type</label>
+                        <select class="form-select" formControlName="role" id="role">
+                            <option value="buyer">Buyer</option>
+                            <option value="admin">Admin</option>
+                        </select>
+                        @if(registerForm.get('role')?.errors && registerForm.get('role')?.touched){
+                        <div class="error-message">
+                            <svg class="error-icon" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd"
+                                    d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z"
+                                    clip-rule="evenodd" />
+                            </svg>
+                            <span>Please select an account type</span>
+                        </div>
+                        }
+                    </div>
+
+                    <button type="submit" class="btn btn-dark w-100 fw-semibold mt-2" [disabled]="isLoading">
+                        @if(isLoading) {
+                        <span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
+                        Creating Account...
+                        } @else {
+                        Create Account
+                        }
+                    </button>
 
                     <p class="text-center mt-3 mb-0 text-dark">
                         Already have an account?
-                        <a routerLink="/auth/login" class="text-primary fw-semibold text-decoration-none">Login</a>
+                        <a routerLink="/auth/login" class="text-primary fw-semibold text-decoration-none">Sign In</a>
                     </p>
                 </form>
             </div>

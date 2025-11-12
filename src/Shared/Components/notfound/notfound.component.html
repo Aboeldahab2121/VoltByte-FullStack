@@ -1,9 +1,9 @@
 <section class="notfound-section">
   <div class="overlay">
-    <h1 class="typing-text">System Error: 404 Not Found</h1>
+    <h1>System Error: 404 Not Found</h1>
 
     <div class="container error-content">
-      <img [src]="notFoundImage" alt="404 Error" style="width: 24rem" />
+      <img [src]="notFoundImage" alt="404 Error" style="width: 16rem" />
 
       <p class="error-desc">
         Looks like the page you’re searching for couldn’t load into memory. It
@@ -11,8 +11,8 @@
       </p>
 
       <div class="d-flex gap-3 justify-content-center mt-4">
-        <button class="cta-button" routerLink="">Return Home</button>
-        <button class="secondary-button" routerLink="">Contact Support</button>
+        <button class="cta-button" routerLink="/home">Return Home</button>
+        <button class="secondary-button" routerLink="/about">Contact Support</button>
       </div>
     </div>
   </div>

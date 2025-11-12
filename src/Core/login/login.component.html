@@ -13,6 +13,17 @@
 
                 <h2 class="text-center fw-semibold mb-4">Welcome to VoltByte</h2>
 
+                @if(loginError){
+                <div class="error-message mb-3">
+                    <svg class="error-icon" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd"
+                            d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z"
+                            clip-rule="evenodd" />
+                    </svg>
+                    <span>{{ loginError }}</span>
+                </div>
+                }
+
                 <form [formGroup]="loginForm" (ngSubmit)="loginSubmit()">
                     <div class="mb-3">
                         <label for="email" class="form-label fw-medium text-dark">Email</label>
@@ -63,18 +74,28 @@
                         }
                     </div>
 
-                    <button type="submit" class="btn btn-dark w-100 fw-semibold mt-2">Login</button>
-                    <button class="btn btn-outline-dark w-100 fw-semibold mt-2">
-                        <img src="../../../SVGs/Google-svg.svg">Continue with Google</button>
-                    <button type="submit" class="btn btn-outline-dark w-100 fw-semibold mt-2">
-                        <img src="../../../SVGs/github-svg.svg">Continue with Github</button>
+                    <button type="submit" class="btn btn-dark w-100 fw-semibold mt-2" [disabled]="isLoading">
+                        @if(isLoading) {
+                        <span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
+                        Loading...
+                        } @else {
+                        Login
+                        }
+                    </button>
+                    
+                    <button type="button" class="btn btn-outline-dark w-100 fw-semibold mt-2" [disabled]="isLoading">
+                        <img src="../../../SVGs/Google-svg.svg">Continue with Google
+                    </button>
+                    
+                    <button type="button" class="btn btn-outline-dark w-100 fw-semibold mt-2" [disabled]="isLoading">
+                        <img src="../../../SVGs/github-svg.svg">Continue with Github
+                    </button>
 
                     <p class="text-center mt-3 mb-0 text-dark">
                         New to VoltByte?
                         <a routerLink="/auth/register" class="text-primary fw-semibold text-decoration-none">Sign Up</a>
                     </p>
                 </form>
-                <!-- show error when login  fails !important -->
             </div>
         </div>
     </div>
