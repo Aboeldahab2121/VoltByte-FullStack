@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormsModule, ReactiveFormsModule, Validators, FormControl, AbstractControl } from '@angular/forms'
+import { RouterLink } from '@angular/router';
 @Component({
   selector: 'app-register',
   standalone: true,
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule,RouterLink],
   templateUrl: './register.component.html',
   styleUrl: './register.component.css'
 })
@@ -19,6 +20,5 @@ export class RegisterComponent {
 
   registerSubmit(){
     console.log(this.registerForm);
-    localStorage
   }
 }
