@@ -84,9 +84,9 @@
                 Qty: {{ item.quantity }}
               </p>
               <div class="d-flex gap-2">
-                <a href="#" class="btn btn-outline-primary rounded-pill">
-                  <lucide-icon [img]="HeartIcon" class="icon"></lucide-icon>
-                </a>
+                <button class="btn btn-outline-primary rounded-pill" (click)="toggleHeart($event, item.id)">
+                    <i [class]="isHeartFilled(item.id) ? 'fas fa-heart' : 'far fa-heart'"></i>
+                  </button>
                 <a href="#" class="btn btn-success rounded-pill">Learn More</a>
               </div>
             </div>

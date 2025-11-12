@@ -31,7 +31,20 @@ import {
   ],
 })
 export class BuildsComponent {
-  readonly HeartIcon = HeartIcon;
+  filledHearts = new Set<number>();
+
+  toggleHeart(event: Event, itemId: number) {
+    event.preventDefault();
+    if (this.filledHearts.has(itemId)) {
+      this.filledHearts.delete(itemId);
+    } else {
+      this.filledHearts.add(itemId);
+    }
+  }
+
+  isHeartFilled(itemId: number): boolean {
+    return this.filledHearts.has(itemId);
+  }
 
   recommended: Item[] = [
     {

@@ -8,29 +8,19 @@
       <div class="card-body">
         <div class="row justify-content-start">
           @for (item of recommended; track $index) {
-          <div
-            class="col-12 col-sm-6 ms-3 col-md-4 col-lg-3 my-3"
-            style="max-width: 18rem"
-          >
+          <div class="col-12 col-sm-6 ms-3 col-md-4 col-lg-3 my-3" style="max-width: 18rem">
             <div class="card hover rounded-5">
-              <img
-                [src]="item.image"
-                class="card-img-top rounded-5 img-fluid"
-                style="height: 200px"
-                alt="..."
-              />
+              <img [src]="item.image" class="card-img-top rounded-5 img-fluid" style="height: 200px" alt="..." />
               <div class="card-body">
                 <h5 class="card-title">{{ item.title }}</h5>
                 <p class="card-text">
                   Price: ${{ item.price }} <br />QTY: {{ item.quantity }}
                 </p>
                 <div class="d-flex gap-2">
-                  <a href="#" class="btn btn-outline-primary rounded-pill">
-                    <lucide-icon [img]="HeartIcon" class="icon"></lucide-icon>
-                  </a>
-                  <a href="#" class="btn btn-success rounded-pill"
-                    >Learn More</a
-                  >
+                  <button class="btn btn-outline-primary rounded-pill" (click)="toggleHeart($event, item.id)">
+                    <i [class]="isHeartFilled(item.id) ? 'fas fa-heart' : 'far fa-heart'"></i>
+                  </button>
+                  <a href="#" class="btn btn-success rounded-pill">Learn More</a>
                 </div>
                 <p class="mt-4 mb-0">1450+ found this helpful</p>
               </div>
@@ -50,23 +40,17 @@
           @for (item of trending; track $index) {
           <div class="col-3 ms-3 my-3" style="width: 18rem">
             <div class="card hover rounded-5">
-              <img
-                [src]="item.image"
-                class="card-img-top rounded-5 img-fluid"
-                style="height: 200px"
-              />
+              <img [src]="item.image" class="card-img-top rounded-5 img-fluid" style="height: 200px" />
               <div class="card-body">
                 <h5 class="card-title">{{ item.title }}</h5>
                 <p class="card-text">
                   Price: ${{ item.price }} <br />QTY: {{ item.quantity }}
                 </p>
                 <div class="d-flex gap-2">
-                  <a href="#" class="btn btn-outline-primary rounded-pill">
-                    <lucide-icon [img]="HeartIcon" class="icon"></lucide-icon>
-                  </a>
-                  <a href="#" class="btn btn-success rounded-pill"
-                    >Learn More</a
-                  >
+                  <button class="btn btn-outline-primary rounded-pill" (click)="toggleHeart($event, item.id)">
+                    <i [class]="isHeartFilled(item.id) ? 'fas fa-heart' : 'far fa-heart'"></i>
+                  </button>
+                  <a href="#" class="btn btn-success rounded-pill">Learn More</a>
                 </div>
               </div>
             </div>
@@ -77,9 +61,7 @@
     </div>
   </div>
 
-  <div
-    class="my-5 d-flex align-items-center gap-4 justify-content-center flex-column"
-  >
+  <div class="my-5 d-flex align-items-center gap-4 justify-content-center flex-column">
     <h1 class="display-1 fs-1 text-white">
       Explore What You Can Build With VoltByte!
     </h1>
