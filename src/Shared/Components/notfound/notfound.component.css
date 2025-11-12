@@ -1,0 +1,152 @@
+.notfound-section {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  text-align: center;
+  color: #fff;
+  overflow: hidden;
+  padding: 2rem;
+}
+
+.notfound-section .overlay {
+  max-width: 800px;
+  z-index: 2;
+}
+.cta-button {
+  background: linear-gradient(135deg, #90caf9, #64b5f6);
+  color: #1a1a1a;
+  padding: 1rem 2.5rem;
+  border: none;
+  border-radius: 50px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.3s, box-shadow 0.3s;
+  font-family: var(--font-main);
+
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(144, 202, 249, 0.3);
+  }
+}
+.error-content {
+  margin-top: 2rem;
+}
+
+.error-desc {
+  margin-top: 1.5rem;
+  color: #b0b0b0;
+  font-size: 1.1rem;
+  line-height: 1.8;
+  font-family: var(--font-main);
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.secondary-button {
+  background: transparent;
+  color: #90caf9;
+  border: 2px solid #90caf9;
+  padding: 1rem 2.5rem;
+  border-radius: 50px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s;
+  font-family: var(--font-main);
+}
+
+.secondary-button:hover {
+  background: rgba(144, 202, 249, 0.1);
+  transform: translateY(-3px);
+  box-shadow: 0 10px 30px rgba(144, 202, 249, 0.15);
+}
+
+@media (max-width: 768px) {
+  .error-desc {
+    font-size: 1rem;
+    padding: 0 1rem;
+  }
+  .cta-button,
+  .secondary-button {
+    width: 100%;
+  }
+}
+
+:root {
+  --font-main: "Outfit", sans-serif;
+}
+
+.hero {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.overlay {
+  text-align: center;
+  color: #fff;
+  padding: 0;
+  max-width: 900px;
+}
+
+.typing-text {
+  font-size: 1.9rem;
+  font-weight: 600;
+  white-space: normal;
+  word-break: break-word;
+  overflow: hidden;
+  border-right: 2px solid #90caf9;
+  display: inline-block;
+  animation: blink 1s step-end infinite;
+  font-family: var(--font-main);
+}
+@keyframes blink {
+  0% {
+    border-color: #90caf9;
+  }
+  50% {
+    border-color: transparent;
+  }
+  100% {
+    border-color: #90caf9;
+  }
+}
+
+.marquee-section {
+  padding: 4rem 0;
+  overflow: hidden;
+}
+
+.marquee {
+  display: flex;
+  gap: 4rem;
+  animation: scroll 30s linear infinite;
+}
+
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.marquee-item {
+  flex-shrink: 0;
+  font-size: 3rem;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.1);
+  white-space: nowrap;
+  font-family: var(--font-main);
+}

@@ -1,17 +1,21 @@
 import { Component } from "@angular/core";
 import { Item } from "../items/Item";
+import { trigger, transition, style, animate } from "@angular/animations";
 import {
-  trigger,
-  transition,
-  style,
-  animate,
-  query,
-  stagger,
-} from "@angular/animations";
+  LucideAngularModule,
+  FileIcon,
+  FacebookIcon,
+  TwitterIcon,
+  InstagramIcon,
+  HeartIcon,
+  LUCIDE_ICONS,
+  HeartPlusIcon,
+} from "lucide-angular";
+
 @Component({
   selector: "app-builds",
   standalone: true,
-  imports: [],
+  imports: [LucideAngularModule],
   templateUrl: "./builds.component.html",
   styleUrl: "./builds.component.css",
   animations: [
@@ -27,6 +31,8 @@ import {
   ],
 })
 export class BuildsComponent {
+  readonly HeartIcon = HeartIcon;
+
   recommended: Item[] = [
     {
       id: 1,
@@ -59,7 +65,7 @@ export class BuildsComponent {
       price: 1599,
       category_id: 1,
       quantity: 4,
-    }
+    },
   ];
 
   trending: Item[] = [

@@ -1,23 +1,22 @@
-import { Injectable, signal } from '@angular/core';
+import { Injectable, signal } from "@angular/core";
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root",
 })
 export class AuthService {
-
-  private tokenKey = 'userToken';
+  private tokenKey = "userToken";
   isAuthenticated = signal(false);
 
-  setToken(token: string): void{
+  setToken(token: string): void {
     localStorage.setItem(this.tokenKey, token);
     this.isAuthenticated.set(true);
   }
 
-  getToken():string | null{
+  getToken(): string | null {
     return localStorage.getItem(this.tokenKey);
   }
 
-  logout():void{
+  logout(): void {
     console.log("Logged Out");
   }
 
@@ -29,5 +28,4 @@ export class AuthService {
     }
     return false;
   }
-
 }

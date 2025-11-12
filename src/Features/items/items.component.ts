@@ -4,11 +4,12 @@ import { trigger, transition, style, animate } from "@angular/animations";
 import { ItemsService } from "../../app/services/items.service";
 import { Item } from "./Item";
 import { CommonModule } from "@angular/common";
+import { LucideAngularModule, HeartIcon } from "lucide-angular";
 
 @Component({
   selector: "app-items",
   standalone: true,
-  imports: [MatChipsModule, CommonModule],
+  imports: [MatChipsModule, CommonModule, LucideAngularModule],
   templateUrl: "./items.component.html",
   styleUrl: "./items.component.css",
   animations: [
@@ -24,10 +25,11 @@ import { CommonModule } from "@angular/common";
   ],
 })
 export class ItemsComponent implements OnInit {
+  readonly HeartIcon = HeartIcon;
   items: Item[] = [];
   itemsFiltered: Item[] = [];
   isLoading: boolean = true;
-  errorMessage: string = '';
+  errorMessage: string = "";
 
   constructor(private _itemsService: ItemsService) {}
 
@@ -44,10 +46,10 @@ export class ItemsComponent implements OnInit {
         this.isLoading = false;
       },
       error: (error) => {
-        console.error('Error loading items:', error);
-        this.errorMessage = 'Failed to load items. Please try again.';
+        console.error("Error loading items:", error);
+        this.errorMessage = "Failed to load items. Please try again.";
         this.isLoading = false;
-      }
+      },
     });
   }
 
@@ -61,5 +63,4 @@ export class ItemsComponent implements OnInit {
       element.title.toLowerCase().includes(searchTerm.toLowerCase())
     );
   }
-  
 }
